@@ -1,6 +1,5 @@
 //Layout
 import { HeaderOnly } from '~/components/Layout';
-
 // Public Routes
 import Home from '~/pages/Home';
 import Following from '~/pages/Follwing';
