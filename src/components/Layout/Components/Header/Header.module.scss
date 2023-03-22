@@ -17,10 +17,13 @@
     justify-content: space-between;
     align-items: center;
 }
+.search,
+.search-result {
+    width: 361px;
+}
 
 .search {
     height: var(--search-height);
-    width: 361px;
     background-color: rgba(22, 24, 35, 0.06);
     border-radius: var(--search-border-radius);
     padding-left: 16px;
@@ -52,6 +55,13 @@
     &:focus-within {
         border-color: rgba(22, 24, 35, 0.2);
     }
+}
+.search-title {
+    height: 30px;
+    font-size: 1.4rem;
+    padding: 5px 12px;
+    font-weight: 600;
+    color: rgba(22, 24, 35, 0.5);
 }
 .clear,
 .loading {
@@ -121,15 +131,6 @@
     cursor: pointer;
     font-size: 2.2rem;
     margin-left: var((--margin-left));
-    &::after {
-        content: 'Create Effect';
-        position: absolute;
-        width: 110px;
-        height: 38px;
-        background-color: rgba(84, 84, 84, 0.92);
-        color: rgb(255, 255, 255);
-        top: 100%;
-    }
 }
 .setting-btn {
     margin-left: var((--margin-left));
