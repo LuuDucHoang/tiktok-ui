@@ -5,6 +5,7 @@ import images from '~/assets/image';
 import Tippy from '@tippyjs/react/headless';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Button from '~/components/Button';
 import {
     faCircleXmark,
     faSpinner,
@@ -53,17 +54,10 @@ function Header() {
                     </div>
                 </Tippy>
                 <div className={cx('action')}>
-                    <button className={cx('upload-btn')}>
-                        <div>
-                            <FontAwesomeIcon icon={faPlus}></FontAwesomeIcon>
-                        </div>
+                    <Button upload leftIcon={<FontAwesomeIcon icon={faPlus}></FontAwesomeIcon>}>
                         Upload
-                    </button>
-                    <button className={cx('login-btn')}>Log in</button>
-                    <img className={cx('effect-icon')} src={images.inconEffect} alt={'Anh effect'}></img>
-                    <button className={cx('setting-btn')}>
-                        <FontAwesomeIcon icon={faEllipsisVertical}></FontAwesomeIcon>
-                    </button>
+                    </Button>
+                    <Button primary>Log in</Button>
                 </div>
             </div>
         </header>
