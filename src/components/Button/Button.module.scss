@@ -60,6 +60,11 @@
 .title + .icon {
     margin-left: 8px;
 }
+.icon {
+    display: inline-block;
+    width: 22px;
+    text-align: center;
+}
 //Button Size
 .small {
     min-height: 88px;
