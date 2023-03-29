@@ -2,9 +2,12 @@ import Button from '~/components/Button';
 import classNames from 'classnames/bind';
 import style from './Menu.module.scss';
 const cx = classNames.bind(style);
-function MenuItems({ data }) {
+function MenuItems({ data, onClick }) {
+    const classes = cx('menu-item', {
+        separate: data.separate,
+    });
     return (
-        <Button className={cx('menu-item')} leftIcon={data.icon} to={data.to}>
+        <Button onClick={onClick} className={classes} leftIcon={data.icon} to={data.to}>
             {data.title}
         </Button>
     );

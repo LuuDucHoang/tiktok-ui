@@ -12,6 +12,7 @@
 }
 .inner {
     height: 100%;
+    padding: 0px var(--default-layout-horizontal-spacer);
     width: var(--default-layout-width);
     display: flex;
     justify-content: space-between;
@@ -88,12 +89,31 @@
         background-color: rgba(22, 24, 35, 0.06);
     }
 }
-
+// action
 .action {
+    display: flex;
+    align-items: center;
 }
+
 .more-btn {
+    cursor: pointer;
     font-size: 2rem;
     margin-left: 28px;
     background-color: transparent;
     padding: 4px 8px;
+}
+.action-btn {
+    font-size: 2rem;
+    color: #161823;
+    background-color: transparent;
+    padding: 4px 12px;
+    cursor: pointer;
+}
+.user-avtar {
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-left: 12px;
+    cursor: pointer;
 }
