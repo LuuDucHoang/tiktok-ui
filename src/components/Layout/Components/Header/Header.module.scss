@@ -103,10 +103,10 @@
     padding: 4px 8px;
 }
 .action-btn {
-    font-size: 2rem;
+    font-size: 2.4rem;
     color: #161823;
     background-color: transparent;
-    padding: 4px 12px;
+    padding: 4px 10px;
     cursor: pointer;
 }
 .user-avtar {
@@ -116,4 +116,12 @@
     border-radius: 50%;
     margin-left: 12px;
     cursor: pointer;
+}
+
+// Icon-custon
+
+.icon-custom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

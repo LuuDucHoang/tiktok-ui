@@ -1,5 +1,5 @@
 const images = {
     logo: require('~/assets/image/logo.svg').default,
-    inconEffect: require('~/assets/image/icon.svg').default,
+    noImg: require('~/assets/image/NoImg.png'),
 };
 export default images;
