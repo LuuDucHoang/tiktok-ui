@@ -8,6 +8,7 @@ import style from './Search.module.scss';
 import AccountsIteam from '~/components/AccountIteams';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import { SearchIcon } from '~/components/icons';
+import { useDebounce } from '~/hooks';
 
 const cx = classNames.bind(style);
 function Search() {
@@ -15,20 +16,39 @@ function Search() {
 
     const [searchValue, setSearchValue] = useState('');
     const [searchResult, setSearchResult] = useState([]);
+    const [loading, setLoanding] = useState(false);
     const [blurInput, setBlurInput] = useState(true);
-    useEffect(() => {
-        const id = setTimeout(() => {
-            setSearchResult([1, 2]);
-        }, 0);
 
-        // return clearTimeout(id);
-    });
+    const debounced = useDebounce(searchValue, 500);
+    useEffect(() => {
+        if (!debounced.trim()) {
+            setSearchResult([]);
+            return;
+        }
+        setLoanding(true);
+        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURI(debounced)}&type=less`)
+            .then((res) => res.json())
+            .then((res) => {
+                setSearchResult(res.data);
+                setLoanding(false);
+            })
+            .catch(() => {
+                setLoanding(false);
+            });
+    }, [debounced]);
     const hanldeClearInput = () => {
         setSearchValue('');
         inputRef.current.focus();
     };
     const handleHideResult = () => {
-        setBlurInput(!blurInput);
+        setBlurInput(false);
+    };
+    const hanldeChangInput = (e) => {
+        if (e.target.value.startsWith(' ')) {
+            setSearchValue('');
+            return;
+        }
+        setSearchValue(e.target.value);
     };
     return (
         <>
@@ -39,9 +59,9 @@ function Search() {
                     <div className={cx('search-result')} tabIndex="-1">
                         <PopperWrapper>
                             <h4 className={cx('search-title')}>Accounts</h4>
-                            <AccountsIteam></AccountsIteam>
-                            <AccountsIteam></AccountsIteam>
-                            <AccountsIteam></AccountsIteam>
+                            {searchResult.map((result) => (
+                                <AccountsIteam key={result.id} data={result}></AccountsIteam>
+                            ))}
                         </PopperWrapper>
                     </div>
                 )}
@@ -49,21 +69,21 @@ function Search() {
             >
                 <div className={cx('search')}>
                     <input
-                        onFocus={handleHideResult}
+                        onFocus={() => setBlurInput(true)}
                         ref={inputRef}
                         value={searchValue}
-                        onChange={(e) => setSearchValue(e.target.value)}
+                        onChange={(e) => hanldeChangInput(e)}
                         placeholder="Search accounts and videos"
                         spellCheck="false"
                     ></input>
 
-                    {!!searchValue && (
+                    {!!searchValue && loading === false && (
                         <button className={cx('clear')} onClick={hanldeClearInput}>
                             <FontAwesomeIcon icon={faCircleXmark}></FontAwesomeIcon>
                         </button>
                     )}
 
-                    {/* <FontAwesomeIcon className={cx('loading')} icon={faSpinner}></FontAwesomeIcon> */}
+                    {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner}></FontAwesomeIcon>}
                     <button className={cx('search-btn')}>
                         <SearchIcon></SearchIcon>
                     </button>
