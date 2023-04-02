@@ -19,7 +19,7 @@ function Search() {
     const [loading, setLoanding] = useState(false);
     const [blurInput, setBlurInput] = useState(true);
 
-    const debounced = useDebounce(searchValue, 500);
+    const debounced = useDebounce(searchValue, 1000);
     useEffect(() => {
         if (!debounced.trim()) {
             setSearchResult([]);
