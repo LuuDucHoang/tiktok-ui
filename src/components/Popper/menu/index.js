@@ -51,12 +51,12 @@ function Menu({ children, hideonclick = false, items = [], onChange = defaultFn 
                                 title="Language"
                                 onBack={() => {
                                     setHistory((prev) => {
-                                        return prev.splice(0, prev.length - 1);
+                                        return prev.slice(0, prev.length - 1);
                                     });
                                 }}
                             ></Header>
                         )}
-                        {renderItems()}
+                        <div className={cx('menu-body')}>{renderItems()}</div>
                     </PopperWrapper>
                 </div>
             )}
