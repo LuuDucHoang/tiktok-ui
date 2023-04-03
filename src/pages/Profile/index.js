@@ -1,9 +1,9 @@
-function Upload() {
+function Profile() {
     return (
         <div>
-            <h2>UploadPage</h2>
+            <h2>ProfilePage</h2>
         </div>
     );
 }
 
-export default Upload;
+export default Profile;

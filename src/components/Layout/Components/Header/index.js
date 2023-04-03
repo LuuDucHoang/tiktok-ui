@@ -19,9 +19,11 @@ import {
     faArrowRightFromBracket,
 } from '@fortawesome/free-solid-svg-icons';
 
+import routesConfig from '~/config/routes';
 import { MessageIcon, InboxIcon } from '~/components/icons';
 import Image from '~/components/Image';
 import Search from './Search';
+import { Link } from 'react-router-dom';
 const cx = classNames.bind(style);
 const MENU_ITEMS = [
     {
@@ -93,7 +95,9 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <img src={images.logo} alt="Logo"></img>
+                <Link to={routesConfig.home} className={cx('logo-link')}>
+                    <img src={images.logo} alt="Logo"></img>
+                </Link>
                 <Search></Search>
                 <div className={cx('action')}>
                     {currentUser ? (

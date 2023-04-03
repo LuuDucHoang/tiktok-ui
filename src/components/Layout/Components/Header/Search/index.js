@@ -10,8 +10,6 @@ import AccountsIteam from '~/components/AccountIteams';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import { SearchIcon } from '~/components/icons';
 import { useDebounce } from '~/hooks';
-import { faLess } from '@fortawesome/free-brands-svg-icons';
-import { type } from '@testing-library/user-event/dist/type';
 
 const cx = classNames.bind(style);
 function Search() {
@@ -46,12 +44,12 @@ function Search() {
         setBlurInput(false);
     };
     const hanldeChangInput = (e) => {
-        if (e.target.value.startsWith(' ')) {
-            setSearchValue('');
-            return;
+        const inputValue = e.target.value;
+        if (!inputValue.startsWith(' ')) {
+            setSearchValue(inputValue);
         }
-        setSearchValue(e.target.value);
     };
+
     return (
         <>
             <HeadlessTippy
@@ -86,7 +84,12 @@ function Search() {
                     )}
 
                     {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner}></FontAwesomeIcon>}
-                    <button className={cx('search-btn')}>
+                    <button
+                        className={cx('search-btn')}
+                        onMouseDown={(e) => {
+                            e.preventDefault();
+                        }}
+                    >
                         <SearchIcon></SearchIcon>
                     </button>
                 </div>

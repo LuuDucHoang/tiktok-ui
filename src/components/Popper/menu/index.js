@@ -7,7 +7,7 @@ import Header from './Header';
 import { useState } from 'react';
 const cx = classNames.bind(style);
 const defaultFn = () => {};
-function Menu({ children, items = [], onChange = defaultFn }) {
+function Menu({ children, hideonclick = false, items = [], onChange = defaultFn }) {
     const [history, setHistory] = useState([
         {
             data: items,
@@ -35,6 +35,7 @@ function Menu({ children, items = [], onChange = defaultFn }) {
 
     return (
         <Tippy
+            hideOnClick={hideonclick}
             interactive={true}
             offset={[12, 8]}
             delay={[0, 700]}
