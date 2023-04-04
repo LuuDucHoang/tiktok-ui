@@ -19,7 +19,7 @@ import {
     faArrowRightFromBracket,
 } from '@fortawesome/free-solid-svg-icons';
 
-import routesConfig from '~/config/routes';
+import config from '~/config/';
 import { MessageIcon, InboxIcon } from '~/components/icons';
 import Image from '~/components/Image';
 import Search from './Search';
@@ -95,7 +95,7 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <Link to={routesConfig.home} className={cx('logo-link')}>
+                <Link to={config.routes.home} className={cx('logo-link')}>
                     <img src={images.logo} alt="Logo"></img>
                 </Link>
                 <Search></Search>

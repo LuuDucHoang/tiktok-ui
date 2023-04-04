@@ -1,6 +1,6 @@
 import style from './DefaultLayout.module.scss';
 import classNames from 'classnames/bind';
-import Header from '~/components/Layout/Components/Header';
+import Header from '~/layouts/Components/Header';
 import Sidebar from './Sidebar';
 const cx = classNames.bind(style);
 function DefaultLayout({ children }) {

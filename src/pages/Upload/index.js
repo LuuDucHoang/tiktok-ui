@@ -1,5 +1,3 @@
-import Sidebar from '~/components/Layout/DefaultLayout/Sidebar';
-
 function Upload() {
     return (
         <>
