@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import * as httpRequest from '~/utils/httpRequest';
 
 export const search = async (q, type = 'less') => {
